@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.UnsupportedEncodingException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -220,7 +221,7 @@ public class CreditCardInfo extends JFrame implements ActionListener {
 			}
 
 		} catch (Exception e) {
-			   JOptionPane.showMessageDialog(null, e);
+//			   JOptionPane.showMessageDialog(null, e);
 		}
 
 	}
@@ -236,6 +237,15 @@ public class CreditCardInfo extends JFrame implements ActionListener {
 		
 	     	   //from
 	     	   try {
+	     		   
+//	     			String query1 = "select * from credit_card where acct_no='"+acct+"' ";
+//	    			
+//	    			ResultSet rs1=db.DbConnect.s.executeQuery(query1);
+//	    			while(rs1.next()) {
+//	    				
+//	    				email1=rs1.getString("email");
+//	    			}
+	     		   
 	     			Email email= new Email("harleyayush@gmail.com", "7219791328a");
 				email.setFrom("harleyayush@gmail.com", "Ayush harle");
 				 email.setSubject("Sky Bank Autority");
@@ -251,6 +261,9 @@ public class CreditCardInfo extends JFrame implements ActionListener {
 			} catch (UnsupportedEncodingException | MessagingException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+//			} catch (SQLException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
 			}
 	     	  
 		}

@@ -24,7 +24,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CreditCard extends JFrame implements ActionListener {
+public class CreditCard extends JFrame implements ActionListener{
 	JLabel name, mothern, phone, aadhar, pan, email, gender, acctn;
 	JTextArea te1;
 	JComboBox qualification;
