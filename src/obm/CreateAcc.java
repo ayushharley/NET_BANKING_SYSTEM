@@ -35,7 +35,7 @@ public class CreateAcc extends JFrame implements ActionListener{
 	public CreateAcc() {
 		// TODO Auto-generated constructor stub
 		getContentPane().setBackground(new ColorUIResource(255, 255, 255));
-		setBounds(200, 0, 890, 700);
+		setBounds(280, 0, 890, 700);
 		setLayout(null);
 
 		ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./imags/add profile.png"));
@@ -222,11 +222,9 @@ public class CreateAcc extends JFrame implements ActionListener{
 		b1.setForeground(new ColorUIResource(255, 255, 255));
 		p2.add(b1);
 		
-		
-		}
-		public static void main(String[] args) {
-			new CreateAcc().setVisible(true);
-			
+		setResizable(false);
+		this.setVisible(true);
+//	new	Login.setVisible(false);
 		}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -293,6 +291,7 @@ public class CreateAcc extends JFrame implements ActionListener{
 				db.DbConnect.s.executeUpdate(query);
 				JOptionPane.showMessageDialog(null, "Account create succesfully");
 				new EmailVer(acct_no).setVisible(true);
+				this.setVisible(false);
 			} catch (Exception e2) {
 				JOptionPane.showMessageDialog(null, e2);
 			}

@@ -25,7 +25,7 @@ public class AddBalance extends JFrame implements ActionListener{
 public AddBalance(String acct) {
 this.acct=acct;
 	getContentPane().setBackground(new ColorUIResource(255,255,255));
-      setBounds(200,100,700,500);
+      setBounds(400,100,700,500);
       setLayout(null);
 //      male-profile.png
       
@@ -67,14 +67,10 @@ this.acct=acct;
 	   		b1.setForeground(new ColorUIResource(255,255,255));
 	   		b1.addActionListener(this);
 	   		p1.add(b1);
-
+	   		setResizable(false);
+	   		this.setVisible(true);
 	   		
-}public static void main(String[] args) {
-	
-	new AddBalance("").setVisible(true);
 }
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	if(e.getSource()==b1)
@@ -93,13 +89,14 @@ this.acct=acct;
 			db.DbConnect.s.executeUpdate(query);
 			
 			JOptionPane.showMessageDialog(null, "Balance added succesfully");
+			this.setVisible(false);
 			new Home(acct).setVisible(true);
 		} catch (Exception e2) {
 			JOptionPane.showMessageDialog(null, "Balance can't be zero");
 		}
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "Can't addd balance greater than 1000");
+			JOptionPane.showMessageDialog(null, "Can't addd balance greater than 10000");
 		}
 		}
 		else {

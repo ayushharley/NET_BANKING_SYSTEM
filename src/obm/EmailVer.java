@@ -29,7 +29,7 @@ public class EmailVer extends JFrame implements ActionListener{
 public EmailVer(String acct) {
 	this.acct=acct;
 	 getContentPane().setBackground(new ColorUIResource(255,255,255));
-     setBounds(200,100,800,470);
+     setBounds(300,100,800,470);
      setLayout(null);
      
      ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./imags/verified-mail.png"));
@@ -88,11 +88,10 @@ public EmailVer(String acct) {
 		b2.setBackground(new Color(0, 0, 255));
 		b2.setForeground(new ColorUIResource(255, 255, 255));
 		p1.add(b2);
+		setResizable(false);
+		this.setVisible(true);
 }
-public static void main(String[] args) {
-	new EmailVer("").setVisible(true);
-	
-}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -109,12 +108,12 @@ public static void main(String[] args) {
 				otp=generateOtp();
 				System.out.println(otp);
 				
-		     	   Email email= new Email("harleyayush@gmail.com", "7219791328a");
+		     	   Email email= new Email("skybanklife@gmail.com", "7219791328a");
 		     	   //from
-		     	   email.setFrom("harleyayush@gmail.com", "Ayush harle");
-		     	   email.setSubject("this is testing email");
+		     	   email.setFrom("skybanklife@gmail.com", " Sky Bank Authority ");
+		     	   email.setSubject("Sky Bank , Bank Account creation ");
 		     	   email.setContent("<h1>welcome to SKY BANK</h1> <p>"
-		     	   		+ " your otp is</p>"+otp , "text/html");
+		     	   		+ " your otp for creation of Sky Bank Bank Account is </p>"+ otp , "text/html");
 		     	   email.addRecipient(email1);
 		     	   email.send();
 				
@@ -139,7 +138,9 @@ public static void main(String[] args) {
 		 String otp1=Integer.toString(otp);
 			if(emailotp.equals(otp1)) {
 				JOptionPane.showMessageDialog(null, "OTP verify seccesfuly");
+				this.setVisible(false);
 				new AcctDetails(acct).setVisible(true);
+				
 //				new CreateLogin(acct).setVisible(true);
 				
 			}

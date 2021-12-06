@@ -26,7 +26,7 @@ public class CreateLogin extends JFrame implements ActionListener{
 public CreateLogin(String acct) {
 	this.acct=acct;
 	 getContentPane().setBackground(new ColorUIResource(255,255,255));
-     setBounds(200,100,575,570);
+     setBounds(400,100,575,570);
      setLayout(null);
      
      ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./imags/add profile.png"));
@@ -102,10 +102,9 @@ public CreateLogin(String acct) {
 		b1.setBackground(new Color(0, 0, 255));
 		b1.setForeground(new ColorUIResource(255, 255, 255));
 		p1.add(b1);
+		setResizable(false);
+		this.setVisible(true);
 
-}public static void main(String[] args) {
-	new CreateLogin("").setVisible(true);
-	
 }
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -124,6 +123,7 @@ public CreateLogin(String acct) {
 				try {
 					db.DbConnect.s.executeUpdate(query);
 					JOptionPane.showMessageDialog(null, "Signup Succesfully");
+					this.setVisible(false);
 					new ToLogin().setVisible(true);
 				} catch (Exception e2) {
 					// TODO: handle exception

@@ -24,7 +24,7 @@ public class AcctDetails extends JFrame implements ActionListener{
 public AcctDetails(String acct) {
 	this.acct=acct;
 	getContentPane().setBackground(new ColorUIResource(255, 255, 255));
-	setBounds(200, 0, 900, 720);
+	setBounds(270, 0, 900, 720);
 	setLayout(null);
 
 	ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./imags/male-profile.png"));
@@ -193,14 +193,14 @@ public AcctDetails(String acct) {
 	} catch (Exception e) {
 		// TODO: handle exception
 	}
+	setResizable(false);
+	this.setVisible(true);
 }
-	public static void main(String[] args) {
-		new AcctDetails("").setVisible(true);
 		
-	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==b1) {
+			this.setVisible(false);
 			new Login().setVisible(true);
 		}
 		

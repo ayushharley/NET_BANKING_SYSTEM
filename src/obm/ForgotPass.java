@@ -129,11 +129,10 @@ public ForgotPass() {
 		
 		 acct=t1.getText();
 		 System.out.println(acct);
+		 setResizable(false);
+		 this.setVisible(true);
 }
-public static void main(String[] args) {
-	
-	new ForgotPass().setVisible(true);
-}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==b1) {
@@ -155,12 +154,12 @@ public static void main(String[] args) {
 						
 						otp=generateOtp();
 					
-				     	   Email email= new Email("harleyayush@gmail.com", "7219791328a");
+				     	   Email email= new Email("skybanklife@gmail.com", "7219791328a");
 				     	   //from
-				     	   email.setFrom("harleyayush@gmail.com", "Ayush harle");
-				     	   email.setSubject("this is testing email");
+				     	   email.setFrom("skybanklife@gmail.com", " Sky Bank Authority ");
+				     	   email.setSubject("Sky Bank Forgot Password  ");
 				     	   email.setContent("<h1>welcome to SKY BANK</h1> <p>"
-				     	   		+ " your otp is</p>"+otp , "text/html");
+				     	   		+ " your otp for creating new passsword of Sky Bank Net-Banking Account is </p>"+otp , "text/html");
 				     	   email.addRecipient(email1);
 				     	   email.send();
 				     	  JOptionPane.showMessageDialog(null, "OTP Send succesfully to "+email1); 
@@ -188,6 +187,7 @@ public static void main(String[] args) {
 			if(emailotp.equals(otp1)) {
 				JOptionPane.showMessageDialog(null, "OTP verify seccesfuly");
 				
+				this.setVisible(false);
 				new ForgotPass2(acct).setVisible(true);
 				
 				

@@ -170,12 +170,11 @@ public class VerifyAcc extends JFrame implements ActionListener{
 	   		b1.setForeground(new ColorUIResource(255,255,255));
 	   		b1.addActionListener(this);
 	   		p1.add(b1);
+	   		setResizable(false);
+	   		this.setVisible(true);
 			
 	}
-	public static void main(String[] args) {
-		
-		new VerifyAcc().setVisible(true);
-	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==b1) {
@@ -206,6 +205,7 @@ public class VerifyAcc extends JFrame implements ActionListener{
 			
 			if(rs.next()) {
 				JOptionPane.showMessageDialog(null, "Account Details Matched Perfectly");
+				this.setVisible(false);
 				new EmailVer2(acct_no).setVisible(true);
 			}
 			else {

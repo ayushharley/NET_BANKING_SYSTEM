@@ -36,7 +36,7 @@ public class CreditCard extends JFrame implements ActionListener{
 
 	public CreditCard(String acct) {
 		this.acct = acct;
-		setBounds(200, 0, 890, 750);
+		setBounds(240, 0, 890, 750);
 		setLayout(null);
 
 		ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./imags/add profile.png"));
@@ -233,12 +233,10 @@ public class CreditCard extends JFrame implements ActionListener{
 			// TODO Auto-generated catch block
 
 		}
+		setResizable(false);
+		this.setVisible(true);
 	}
 
-public static void main(String[] args) {
-	new CreditCard("").setVisible(true);
-	
-}
 	@Override
 	public void actionPerformed(ActionEvent e)  {
 		if (e.getSource() == apply) {
@@ -277,6 +275,7 @@ public static void main(String[] args) {
 					JOptionPane.showMessageDialog(null,
 							"Hurray ! \nYou'r Eligible for credit card press ok to get one ");
 
+					this.setVisible(false);
 					new CreditCardInfo(acct).setVisible(true);
 				} catch (Exception e2) {
              System.out.println(e2);

@@ -36,7 +36,7 @@ public class CreditCardInfo extends JFrame implements ActionListener {
 	public CreditCardInfo(String acct) {
 		this.acct=acct;
 		getContentPane().setBackground(new ColorUIResource(255, 255, 255));
-		setBounds(200, 10, 690, 600);
+		setBounds(300, 10, 690, 600);
 		setLayout(null);
 
 		ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("./imags/gold-card-chip.png"));
@@ -223,13 +223,10 @@ public class CreditCardInfo extends JFrame implements ActionListener {
 		} catch (Exception e) {
 
 		}
+		setResizable(false);
+		this.setVisible(true);
 
 	}
-	public static void main(String[] args) {
-		new CreditCardInfo("").setVisible(true);
-		
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==sendo) {
@@ -239,8 +236,8 @@ public class CreditCardInfo extends JFrame implements ActionListener {
 	     	   try {
 	     		   
 	     		   
-	     			Email email= new Email("harleyayush@gmail.com", "7219791328a");
-				email.setFrom("harleyayush@gmail.com", "Ayush harle");
+	     			Email email= new Email("skybanklife@gmail.com", "7219791328a");
+				email.setFrom("skybanklife@gmail.com", " Sky Bank Authority ");
 				 email.setSubject("Sky Bank Autority");
 		     	   email.setContent("<h1>welcome to SKY BANK</h1> <p>"
 		     	   		+ " your Credit card pin is</p>"+pin , "text/html");
@@ -249,6 +246,7 @@ public class CreditCardInfo extends JFrame implements ActionListener {
 		     	   
 		     	   JOptionPane.showMessageDialog(null, "Pin send succesfully. check your email for pin");
 		     	   JOptionPane.showMessageDialog(null, "Credit-card generated succedfully \nclick ok to go to home page");
+		     	  this.setVisible(false);
 		     	   new Home(acct).setVisible(true);
 				
 			} catch (UnsupportedEncodingException | MessagingException e1) {

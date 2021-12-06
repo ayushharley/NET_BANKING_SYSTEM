@@ -24,7 +24,7 @@ public class ForgotPass2 extends JFrame implements ActionListener{
 public ForgotPass2(String acct) {
 	this.acct=acct;
 	 getContentPane().setBackground(new ColorUIResource(255,255,255));
-     setBounds(300,60,700,490);
+     setBounds(360,60,700,490);
      setLayout(null);
      
      ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("./imags/reset-pass-icon.png"));
@@ -83,12 +83,10 @@ public ForgotPass2(String acct) {
 		l11.setBounds(0, 0, 21, 21);
 		b1.add(l11);
 		
-		System.out.println(acct);
+		setResizable(false);
+		this.setVisible(true);
 }
-	public static void main(String[] args) {
-	new ForgotPass2("").setVisible(true);
-
-	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -102,6 +100,7 @@ public ForgotPass2(String acct) {
 			try {
 				db.DbConnect.s.executeUpdate(query);
 				JOptionPane.showMessageDialog(null, "Password Change Succesfully");
+				this.setVisible(false);
 				new ToLogin2().setVisible(true);
 				
 			}

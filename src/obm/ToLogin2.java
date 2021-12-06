@@ -49,15 +49,15 @@
 		JLabel l3 = new JLabel(i6);
 		l3.setBounds(200, 320, 30, 30);
 		b1.add(l3);
+		setResizable(false);
+		this.setVisible(true);
 	}
-	public static void main(String[] args) {
-		new ToLogin2().setVisible(true);
-		
-	}
+	
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			if (e.getSource()==b1) {
+				this.setVisible(false);
 				new Login().setVisible(true);
 			}
 		}

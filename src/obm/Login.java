@@ -194,13 +194,10 @@ public class Login extends JFrame implements MouseInputListener{
 			
 	   		setUndecorated(true);
 	   		
+	   		this.setVisible(true);
 	   	
 	}
 
-public static void main(String[] args) {
-	new Login().setVisible(true);
-	
-}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -225,9 +222,11 @@ public static void main(String[] args) {
 //    		  System.out.println(balance);
     		  if (balance2<=2) {
 				new AddBalance(acct).setVisible(true);
+				this.setVisible(false);
 			}
     		  else {
     			  new Home(acct).setVisible(true);
+    			  this.setVisible(false);
 			}
     		  
     		
@@ -248,15 +247,18 @@ public static void main(String[] args) {
 		if(e.getSource()==p2)
 		{
 		new CreateAcc().setVisible(true);
+		this.setVisible(false);
 		}
 	
 		if(e.getSource()==p3)
 		{
 			new VerifyAcc().setVisible(true);
+			this.setVisible(false);
 		}
 		if(e.getSource()==p4)
 		{
 			new ForgotPass().setVisible(true);
+			this.setVisible(false);
 		}
 		if(e.getSource()==p6)
 		{

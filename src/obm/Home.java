@@ -70,12 +70,14 @@ public class Home extends JFrame implements MouseInputListener, ActionListener, 
 	String debit_new_repin;
 
 	// profile
-	JLabel l1, acct_nol, panl, adhar, emaill, usernamel;
+	JLabel l1, acct_nol, panl, adhar, emaill, usernamel,nameprofile;
 
 	// databse string
 	String name, mother_name, number, adhar_no, pan_no, acct_no, debit_no, debit_pin, email, address, gender, date,
 			username, creditcardno, creditbalance, balance, creditdate, creditcvv, creditname, creditpin;
+    
 	static String creditemail;
+	static String card_name ;
 	static String otp;
 	String repin;
 
@@ -314,11 +316,11 @@ this.acct=acct;
 		l62.setBounds(320, 15, 80, 80);
 		l61.add(l62);
 
-		JLabel l63 = new JLabel("Ayush ashokrao harle");
-		l63.setFont(new FontUIResource("Railway", Font.BOLD, 19));
-		l63.setForeground(new ColorUIResource(255, 255, 255));
-		l63.setBounds(250, 100, 270, 22);
-		l61.add(l63);
+		nameprofile = new JLabel();
+		nameprofile.setFont(new FontUIResource("Railway", Font.BOLD, 19));
+		nameprofile.setForeground(new ColorUIResource(255, 255, 255));
+		nameprofile.setBounds(250, 100, 470, 22);
+		l61.add(nameprofile);
 
 		JLabel l64 = new JLabel("_________________________________________________________________________");
 		l64.setForeground(new ColorUIResource(255, 255, 255));
@@ -397,6 +399,7 @@ this.acct=acct;
 		emaill.setBounds(380, 390, 400, 22);
 		l61.add(emaill);
 
+		nameprofile.setText(name);
 		acct_nol.setText(acct);
 		adhar.setText(adhar_no);
 		panl.setText(pan_no);
@@ -411,7 +414,7 @@ this.acct=acct;
 		HomePanel.setLayout(null);
 		add(HomePanel);
 
-		namemain = new JLabel(" Hell0 ! Ayush Ashokrao Harle");
+		namemain = new JLabel();
 		namemain.setFont(new FontUIResource("Railway", Font.BOLD, 18));
 		namemain.setForeground(new ColorUIResource(30, 87, 238));
 		namemain.setBounds(450, 15, 550, 25);
@@ -467,6 +470,7 @@ this.acct=acct;
 		l79.add(debitlogo2);
 
 		// value
+		namemain.setText(" Hello ! "+name);
 		debitacc.setText(debit_no);
 		debitbalance.setText(balance);
 		//
@@ -570,12 +574,13 @@ this.acct=acct;
 		// adding it to JScrollPane
 		 model1 = new DefaultTableModel(new Object[] { "Date", "Account No", "Amount", "C/D" }, 0);
 		j1.setModel(model1);
+		j1.setEnabled(false);
 		j1.setRowHeight(50);
 		sp1 = new JScrollPane(j1);
 		sp1.setBackground(new ColorUIResource(211, 243, 132));
 		HomePanel2.add(sp1);
 		try {
-			String query = "select * from acct_statement";
+			String query = "select * from acct_statement where user_acct_no='"+acct+"' ";
 			ResultSet rs = db.DbConnect.s.executeQuery(query);
 			while (rs.next()) {
 				Date date = rs.getDate(1);
@@ -678,7 +683,7 @@ this.acct=acct;
 		l93.setBounds(690, 260, 200, 25);
 		p12.add(l93);
 
-// ----------------------------------------------------------------customer details----------------------------------------------------------------
+// ----------------------------------------------------customer details----------------------------------------------------------------
 
 		JLabel l94 = new JLabel("Account Status  ");
 		l94.setFont(new FontUIResource("Railway", Font.BOLD, 16));
@@ -743,7 +748,7 @@ this.acct=acct;
 		JLabel l104 = new JLabel("Address");
 		l104.setFont(new FontUIResource("Railway", Font.BOLD, 16));
 		l104.setForeground(new ColorUIResource(71, 73, 73));
-		l104.setBounds(50, 280, 200, 25);
+		l104.setBounds(50, 280, 200, 34);
 		p12.add(l104);
 
 		addressl = new JTextArea();
@@ -1345,6 +1350,7 @@ this.acct=acct;
 		// adding it to JScrollPane
 		model2 = new DefaultTableModel(new Object[] { "Date", "Account No", "Amount", "C/D" }, 0);
 		j2.setModel(model2);
+		j2.setEnabled(false);
 		j2.setRowHeight(50);
 		 sp2 = new JScrollPane(j2);
 		sp2.setBackground(new ColorUIResource(211, 243, 132));
@@ -1352,7 +1358,7 @@ this.acct=acct;
 	
 		
 		try {
-			String query = "select * from acct_statement";
+			String query = "select * from acct_statement where user_acct_no='"+acct+"'";
 			ResultSet rs = db.DbConnect.s.executeQuery(query);
 			while (rs.next()) {
 				Date date = rs.getDate(1);
@@ -1374,12 +1380,9 @@ this.acct=acct;
 		ProfilePanel.setVisible(false);
 		TransferPanel.setVisible(false);
 		HomePanel.setVisible(true);
-		
-	}public static void main(String[] args) {
-		new Home("").setVisible(true);
+		this.setVisible(true);
 		
 	}
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (e.getSource() == Home) {
@@ -1428,10 +1431,12 @@ this.acct=acct;
 			int selectedOption = JOptionPane.showConfirmDialog(null, "Do you Really want to Logout?", "Choose",
 					JOptionPane.YES_NO_OPTION);
 			if (selectedOption == JOptionPane.YES_OPTION) {
+				this.setVisible(false);
 				new Login().setVisible(true);
 			}
 		}
 		if (e.getSource() == apply) {
+			this.setVisible(false);
 			new CreditCard(acct).setVisible(true);
 		}
 
@@ -1480,10 +1485,10 @@ this.acct=acct;
 			otp = run();
 			System.out.println(otp);
 
-			Email email = new Email("harleyayush@gmail.com", "7219791328a");
-			email.setFrom("harleyayush@gmail.com", "Ayush harle");
-			email.setSubject("Sky Bank Autority");
-			email.setContent("<h1>welcome to SKY BANK</h1> <p>" + " your otp for Credit card pin change is</p>" + otp,
+			Email email = new Email("skybanklife@gmail.com", "7219791328a");
+			email.setFrom("skybanklife@gmail.com", " Sky Bank Authority ");
+			email.setSubject("Sky Bank Autority ");
+			email.setContent("<h1>welcome to SKY BANK</h1> <p>" + " your otp for "+ card_name +"card pin change is</p>" + otp,
 					"text/html");
 			email.addRecipient(creditemail);
 			email.send();
@@ -1494,7 +1499,7 @@ this.acct=acct;
 			// TODO: handle exception
 		}
 
-	}
+ 	}
 
 	public static String run() {
 
@@ -1509,6 +1514,7 @@ this.acct=acct;
 	
 if (e.getSource() == creditsendob) {
 			
+	card_name="Credit";
 			String olpin=creditoldpint.getText();
 		
 			if (olpin.equals(creditpin)) {
@@ -1582,6 +1588,7 @@ if (e.getSource() == creditsendob) {
 		
 		if (e.getSource() == debit_send_otpb) {
 			
+			card_name="Debit";
 			String debit_ol_pin=debit_old_pint.getText();
 		
 			if (debit_ol_pin.equals(debit_pin)) {
@@ -1692,7 +1699,7 @@ if (e.getSource() == creditsendob) {
 					 java.sql.Date sqlDate = new java.sql.Date(currDate.getTime());
 			    	System.out.println(sqlDate);
 			    	
-                   String query2="insert into acct_statement value('"+sqlDate+"','"+receiver_acc+"','"+amount+"','credited')";
+                   String query2="insert into acct_statement value('"+sqlDate+"','"+receiver_acc+"','"+amount+"','credited','"+acct+"')";
 	    	        db.DbConnect.s.executeUpdate(query2);
 
 	    	        JOptionPane.showMessageDialog(null, "Amount sent succesfully");
