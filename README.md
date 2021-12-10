@@ -255,3 +255,4 @@ user will be able to log out.
 
 - [@ayushharley](https://github.com/ayushharley)
 
+Thank you for using Net Banking Management System.
